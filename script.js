@@ -170,3 +170,11 @@ function moveLeft() {
   }
   manager.selectChest(chests[Math.modulo(prevIndex, manager.cycle.length)]);
 }
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowLeft') {
+      moveLeft();
+  } else if (event.key === 'ArrowRight') {
+      moveRight();
+  }
+});
