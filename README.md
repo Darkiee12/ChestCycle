@@ -27,7 +27,7 @@ This website is designed to help players of Supercell games track their progress
 
 ## How It Works
 
-- **Cycle Tracking:** Update your current progress in the cycle by entering the relevant data into the form on the website. Your progress will be saved automatically in your browser's local storage.
+- **Cycle Tracking:** Update your current progress in the cycle by selecting the chest in the cycle on the website. Your progress will be saved automatically in your browser's local storage.
 - **Local Storage:** The website uses local storage to persist the user's cycle data across browser sessions. The information is saved only on your device and is not accessible by anyone else.
 
 ## Disclaimer
