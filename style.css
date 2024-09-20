@@ -1,48 +1,48 @@
 @font-face {
   font-family: 'SquadLatin';
-  src: url('../assets/SquadLatin-Regular.otf') format('opentype');
+  src: url('./assets/SquadLatin-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SquadLatin';
-  src: url('../assets/SquadLatin-Italic.otf') format('opentype');
+  src: url('./assets/SquadLatin-Italic.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'SquadLatin';
-  src: url('../assets/SquadLatin-Bold.otf') format('opentype');
+  src: url('./assets/SquadLatin-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SquadLatin';
-  src: url('../assets/SquadLatin-Black.otf') format('opentype');
+  src: url('./assets/SquadLatin-Black.otf') format('opentype');
   font-weight: 900; /* Black weight */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SquadLatin';
-  src: url('../assets/SquadLatin-ExtraBold.otf') format('opentype');
+  src: url('./assets/SquadLatin-ExtraBold.otf') format('opentype');
   font-weight: 800; /* Extra Bold weight */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SquadLatin';
-  src: url('../assets/SquadLatin-ExtraBoldItalic.otf') format('opentype');
+  src: url('./assets/SquadLatin-ExtraBoldItalic.otf') format('opentype');
   font-weight: 800; /* Extra Bold weight */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'SquadLatin';
-  src: url('../assets/SquadLatin-BlackItalic.otf') format('opentype');
+  src: url('./assets/SquadLatin-BlackItalic.otf') format('opentype');
   font-weight: 900; /* Black weight */
   font-style: italic;
 }
