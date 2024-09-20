@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'SquadLatin';
+  src: url('/assets/SquadLatin-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SquadLatin';
+  src: url('/assets/SquadLatin-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SquadLatin';
+  src: url('/assets/SquadLatin-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SquadLatin';
+  src: url('/assets/SquadLatin-Black.otf') format('opentype');
+  font-weight: 900; /* Black weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SquadLatin';
+  src: url('/assets/SquadLatin-ExtraBold.otf') format('opentype');
+  font-weight: 800; /* Extra Bold weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SquadLatin';
+  src: url('/assets/SquadLatin-ExtraBoldItalic.otf') format('opentype');
+  font-weight: 800; /* Extra Bold weight */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SquadLatin';
+  src: url('/assets/SquadLatin-BlackItalic.otf') format('opentype');
+  font-weight: 900; /* Black weight */
+  font-style: italic;
+}
+
+body{
+  font-family: 'SquadLatin', sans-serif;
+}
+
+
+/* CSS Classes */
+.sb-regular {
+  font-family: 'SquadLatin';
+  font-weight: normal;
+  font-style: normal;
+}
+
+.sb-italic {
+  font-family: 'SquadLatin';
+  font-weight: normal;
+  font-style: italic;
+}
+
+.sb-bold {
+  font-family: 'SquadLatin';
+  font-weight: bold;
+  font-style: normal;
+}
+
+.sb-black {
+  font-family: 'SquadLatin';
+  font-weight: 900; /* Black weight */
+  font-style: normal;
+}
+
+.sb-extra-bold {
+  font-family: 'SquadLatin';
+  font-weight: 800; /* Extra Bold weight */
+  font-style: normal;
+}
+
+.sb-extra-bold-italic {
+  font-family: 'SquadLatin';
+  font-weight: 800; /* Extra Bold weight */
+  font-style: italic;
+}
+
+.sb-black-italic {
+  font-family: 'SquadLatin';
+  font-weight: 900; /* Black weight */
+  font-style: italic;
+}
+
+.selected {
+  -webkit-filter: drop-shadow(5px 5px 5px #FFF); /* Red shadow effect */
+  filter: drop-shadow(5px 5px 5px #D30000);
+}

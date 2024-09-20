@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Squad Busters Chest Cycle" />
+  <meta property="og:description" content="Help you track where you are in the Chest Cycle" />
+  <meta property="og:image"
+    content="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC8zbkFTSzZ6ZDN0c0ptUWt2WkFucS5wbmcifQ:supercell:t_ikZ6r43u3zCk5eGGIleUfs04JCK8vhId2W2-rG8pA?width=2400" />
+  <meta property="og:type" content="website" />
+  <link rel="icon"
+    href="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC8zbkFTSzZ6ZDN0c0ptUWt2WkFucS5wbmcifQ:supercell:t_ikZ6r43u3zCk5eGGIleUfs04JCK8vhId2W2-rG8pA?width=2400"
+    type="image/png" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>SB Chest Cycle</title>
+</head>
+
+<body
+  class="w-full h-screen bg-[url('https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9QUUh2NTk3QnRLM1JxS0Ezb0R6ci5wbmcifQ:supercell:G8oB7cd5fhTs_ULunTADZ9L_lqMF0hNw3ACR8-OHbEs?width=2400')] bg-cover bg-center">
+  <div class="w-full text-center p-5 text-5xl sb-extra-bold text-white">Squad Busters Chest Cycle</div>
+  <p class="px-5 text-white sb-regular">Click at the chest you just opened to start saving where you are in the cycle!
+  </p>
+  <div class="w-full md:px-5">
+    <div class="bg-black bg-opacity-30">
+
+      <div class="grid grid-cols-10 grid-rows-6 gap-y-5 p-2 md:p-5" id="canvas"></div>
+      <div class="w-full flex"
+        style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1) 40%);">
+        <div class="w-[20%] relative flex pt-3 md:pt-6">
+          <div class="bg-black w-[60%] flex justify-center items-center">
+            <button
+              class="text-white text-[4rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+              id="left" onclick="moveLeft()">
+              < </button>
+          </div>
+          <div
+            class="h-0 w-[40%] bg-transparent border-r-[60px] border-r-transparent border-b-[10rem] border-b-[black] border-solid">
+          </div>
+        </div>
+        <div class="w-[60%]">
+          <p class="text-center text-lg text-white sb-bold">Your next chest is</p>
+          <div class="flex justify-center items-center" id="next-chest"></div>
+        </div>
+        <div class="w-[20%] relative flex pt-3 md:pt-6">
+          <div
+            class="h-0 w-[40%] bg-transparent border-l-[60px] border-l-transparent border-b-[10rem] border-b-[black] border-solid">
+          </div>
+          <div class="bg-black w-[60%] flex justify-center items-center">
+            <button
+              class="text-white text-[4rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+              id="right" onclick="moveRight()">></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="sb-italic w-full text-center pt-3">This content is not affiliated with, endorsed, sponsored, or specifically approved by Supercell and Supercell is not responsible for it.</p>
+  <noscript>Please enable JavaScript to allow this page function properly!</noscript>
+  <script>
+    Math.modulo = function (a, b) {
+      return ((a % b) + b) % b;
+    }
+    class ChestManager {
+      canvas = document.getElementById('canvas');
+      chests = {
+        common: {
+          url: "https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC85ZzVyYWFjRmF0enNTN1lyYjY3TS5wbmcifQ:supercell:aAuoUY7qG_v6CYsZvtkUFTN-nh7A5lcssJ5GlOcGiB4?width=2400",
+          name: "Common",
+          color: "bg-[#8A4B26]"
+        },
+        rare: {
+          url: "https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9Rek1RbnN3cE5yOHJyUkV6THpwdi5wbmcifQ:supercell:z_WrRoRiaLlPfbckhNDABaoUyfumEg5r7J8iROfB0Vk?width=2400",
+          name: "Rare",
+          color: "bg-[#F0A900]"
+        },
+        epic: {
+          url: "https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC8zbkFTSzZ6ZDN0c0ptUWt2WkFucS5wbmcifQ:supercell:t_ikZ6r43u3zCk5eGGIleUfs04JCK8vhId2W2-rG8pA?width=2400",
+          name: "Epic",
+          color: "bg-[#8544C3]"
+        }
+      };
+
+      cycle = ["common", "rare", "common", "epic", "common", "common", "rare", "common", "rare", "rare",
+        "rare", "common", "rare", "common", "common", "epic", "common", "common", "common", "common",
+        "common", "common", "common", "rare", "common", "rare", "common", "common", "rare", "rare",
+        "rare", "common", "common", "epic", "common", "epic", "common", "common", "common", "common",
+        "common", "common", "common", "rare", "common", "rare", "common", "common", "common", "rare",
+        "rare", "epic", "common", "rare", "common", "common", "common", "common", "epic", "common"
+      ];
+      constructor() {
+        this.selectedChest = null;
+        this.observers = [];
+      }
+
+      selectChest(chest) {
+        if (this.selectedChest) {
+          this.selectedChest.classList.remove('selected');
+        }
+        this.selectedChest = chest;
+        if (this.selectedChest) {
+          this.selectedChest.classList.add('selected');
+        }
+        this.notifyObservers();
+        this.persistState();
+        this.updateNextChest();
+      }
+
+      registerObserver(observer) {
+        this.observers.push(observer);
+      }
+
+      notifyObservers() {
+        this.observers.forEach(observer => observer.update(this.selectedChest));
+      }
+
+      persistState() {
+        const index = Array.from(document.querySelectorAll('.chest')).indexOf(this.selectedChest);
+        localStorage.setItem("CurrentChest", index);
+      }
+
+      getCurrentState() {
+        return parseInt(localStorage.getItem("CurrentChest"));
+      }
+
+      updateNextChest() {
+        const index = this.getCurrentState();
+        let nextIndex;
+        let row = Math.floor(index / 10);
+        if (row % 2 === 0) {
+          nextIndex = (index % 10 == 9) ? index + 10 : index + 1;
+        } else {
+          nextIndex = (index % 10 == 0) ? index + 10 : index - 1;
+        }
+        const nextChest = document.getElementById('next-chest');
+        const img = document.createElement('img');
+        img.classList.add("w-24", "p-2");
+        img.src = this.chests[this.cycle[nextIndex % this.cycle.length]].url;
+        img.alt = this.chests[this.cycle[nextIndex % this.cycle.length]].name;
+        nextChest.innerHTML = "";
+        nextChest.appendChild(img);
+      }
+
+      loadState() {
+        const index = parseInt(localStorage.getItem("CurrentChest")) || 0;
+        this.canvas.innerHTML = "";
+        this.cycle.forEach((rarity, index) => {
+          const chest = new Chest(index, this.chests[rarity]).render();
+          this.canvas.appendChild(chest);
+        });
+        if (index !== null) {
+          const chests = document.querySelectorAll('.chest');
+          const chest = chests[index];
+          if (chest) {
+            this.selectChest(chest);
+          }
+        }
+      }
+    }
+
+    class ChestObserver {
+      update(selectedChest) {
+        console.log(`Selected chest:`, selectedChest);
+      }
+    }
+
+    class Chest {
+      constructor(index, chest) {
+        this.index = index;
+        this.chest = chest;
+      }
+
+      render() {
+        const wrapper = document.createElement('div');
+        wrapper.classList.add("relative", "flex", "justify-center", "items-center", "col-span-1");
+        const container = document.createElement('div');
+        container.classList.add("chest", "flex", "md:h-10", "h-6");
+        container.id = this.index;
+        const img = document.createElement('img');
+        img.src = this.chest.url;
+        img.alt = this.chest.name;
+        container.appendChild(img);
+        container.addEventListener('click', () => {
+          manager.selectChest(container);
+        });
+        wrapper.appendChild(container);
+        return wrapper;
+      }
+    }
+
+    const manager = new ChestManager();
+    const observer = new ChestObserver();
+    manager.registerObserver(observer);
+    manager.loadState();
+    const DELAY = 500;
+    function moveRight() {
+      const button = document.getElementById('right');
+      button.classList.add('translate-x-5'); 
+      setTimeout(() => {
+        button.classList.remove('translate-x-5');
+      }, DELAY); 
+      const chests = Array.from(document.querySelectorAll('.chest'));
+      const currentChest = manager.selectedChest;
+      const index = parseInt(currentChest.id);
+      let nextIndex;
+      let row = Math.floor(index / 10);
+      if (row % 2 === 0) {
+        nextIndex = (index % 10 == 9) ? index + 10 : index + 1;
+      } else {
+        nextIndex = (index % 10 == 0) ? index + 10 : index - 1;
+      }
+      manager.selectChest(chests[nextIndex % manager.cycle.length]);
+    }
+   
+    function moveLeft() {
+      const button = document.getElementById('left');
+      button.classList.add('-translate-x-5'); 
+      setTimeout(() => {
+        button.classList.remove('-translate-x-5');
+      }, DELAY); 
+      const chests = Array.from(document.querySelectorAll('.chest'));
+      const currentChest = manager.selectedChest;
+      const index = parseInt(currentChest.id);
+      let prevIndex;
+      let row = Math.floor(index / 10);
+      if (row % 2 === 0) {
+        prevIndex = (index % 10 == 0) ? index - 10 : index - 1;
+      } else {
+        prevIndex = (index % 10 == 9) ? index - 10 : index + 1;
+      }
+      manager.selectChest(chests[Math.modulo(prevIndex, manager.cycle.length)]);
+    }
+
+  </script>
+
+</body>
+
+</html>
