@@ -22,11 +22,11 @@ class ChestManager {
   };
 
   cycle = ["common", "rare", "common", "epic", "common", "common", "rare", "common", "rare", "rare",
-    "rare", "common", "rare", "common", "common", "epic", "common", "common", "common", "common",
-    "common", "common", "common", "rare", "common", "rare", "common", "common", "rare", "rare",
-    "rare", "common", "common", "epic", "common", "epic", "common", "common", "common", "common",
-    "common", "common", "common", "rare", "common", "rare", "common", "common", "common", "rare",
-    "rare", "epic", "common", "rare", "common", "common", "common", "common", "epic", "common"
+           "rare", "common", "rare", "common", "common", "epic", "common", "common", "common", "common",
+           "common", "common", "common", "rare", "common", "rare", "common", "common", "rare", "rare",
+           "rare", "common", "common", "epic", "common", "epic", "common", "common", "common", "common",
+           "common", "common", "common", "rare", "common", "rare", "common", "common", "common", "rare",
+           "rare", "epic", "common", "rare", "common", "common", "common", "common", "epic", "common"
   ];
   constructor() {
     this.selectedChest = null;
@@ -178,3 +178,15 @@ document.addEventListener('keydown', function(event) {
       moveRight();
   }
 });
+
+function moveLeftThrice(){
+  for(let i = 0; i < 3; i++){
+    moveLeft();
+  }
+}
+
+function moveRightThrice(){
+  for(let i = 0; i < 3; i++){
+    moveRight();
+  }
+}

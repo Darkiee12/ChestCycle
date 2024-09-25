@@ -29,35 +29,50 @@
       <div class="grid grid-cols-10 grid-rows-6 gap-y-5 p-2 md:p-5" id="canvas"></div>
       <div class="w-full flex"
         style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 1) 40%);">
-        <div class="w-[20%] relative flex pt-3 md:pt-6">
-          <div class="bg-black w-[60%] flex justify-center items-center">
+        <div class="w-[30%] md:w-[20%] relative flex pt-3 md:pt-6">
+          <div class="bg-black w-[60%] flex justify-between items-center pl-2 md:pl-8">
             <button
-              class="text-white text-[4rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+              class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+              id="left" onclick="moveLeftThrice()">
+              <p class="text-4xl sm:text-[4rem]">&lt;<sub class="text-sm">3x</sub></p>
+            </button>
+            <button
+              class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
               id="left" onclick="moveLeft()">
-              < </button>
+              <p class="text-4xl sm:text-[4rem]">&lt;</p>
+            </button>
           </div>
           <div
-            class="h-0 w-[40%] bg-transparent border-r-[60px] border-r-transparent border-b-[10rem] border-b-[black] border-solid">
+            class="h-0 w-[40%] bg-transparent border-r-[2rem] md:border-r-[5rem] border-r-transparent border-b-[6rem] border-b-[black] border-solid">
           </div>
         </div>
-        <div class="w-[60%]">
+        <div class="w-[40%] md:w-[60%]">
           <p class="text-center text-lg text-white sb-bold">Your next chest is</p>
           <div class="flex justify-center items-center" id="next-chest"></div>
         </div>
-        <div class="w-[20%] relative flex pt-3 md:pt-6">
+        <div class="w-[30%] md:w-[20%] relative flex pt-3 md:pt-6">
           <div
-            class="h-0 w-[40%] bg-transparent border-l-[60px] border-l-transparent border-b-[10rem] border-b-[black] border-solid">
+            class="h-0 w-[40%] bg-transparent border-l-[2rem] md:border-l-[5rem] border-l-transparent border-b-[6rem] border-b-[black] border-solid">
           </div>
-          <div class="bg-black w-[60%] flex justify-center items-center">
+          <div class="bg-black w-[60%] flex justify-between items-center pr-2 md:pr-8">
             <button
-              class="text-white text-[4rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-              id="right" onclick="moveRight()">></button>
+              class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+              id="right" onclick="moveRight()">
+              <p class="text-4xl sm:text-[4rem]">&gt;</p>
+            </button>
+            <button
+              class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 flex"
+              id="right" onclick="moveRightThrice()">
+              <p class="text-4xl sm:text-[4rem]">&gt;<sub class="text-sm">3x</sub></p>
+
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <p class="sb-italic w-full text-center py-2">This content is not affiliated with, endorsed, sponsored, or specifically approved by Supercell and Supercell is not responsible for it.</p>
+  <p class="sb-italic w-full text-center py-2">This content is not affiliated with, endorsed, sponsored, or specifically
+    approved by Supercell and Supercell is not responsible for it.</p>
   <noscript>Please enable JavaScript to allow this page function properly!</noscript>
   <script src="./script.js"></script>
 
